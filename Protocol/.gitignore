@@ -14,4 +14,3 @@ truffle-config.js
 !deployments/*.log
 
 scripts
-migrations
