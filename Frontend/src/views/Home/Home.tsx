@@ -31,42 +31,27 @@ const Home: React.FC = () => {
     }
   }, [basisCash]);
 
-  const cashAddr = useMemo(() => basisCash?.BAC.address, [basisCash]);
-  const shareAddr = useMemo(() => basisCash?.BAS.address, [basisCash]);
-  const bondAddr = useMemo(() => basisCash?.BAB.address, [basisCash]);
+  // const cashAddr = useMemo(() => basisCash?.BAC.address, [basisCash]);
+  // const shareAddr = useMemo(() => basisCash?.BAS.address, [basisCash]);
+  // const bondAddr = useMemo(() => basisCash?.BAB.address, [basisCash]);
+  const acAddr = useMemo(() => basisCash?.AC.address, [basisCash]);
 
   return (
     <Page>
       <PageHeader
-        icon="👋"
-        subtitle="Buy, sell, and provide liquidity for Basis Cash and Basis Shares on Uniswap"
-        title="Welcome to Basis Cash!"
+        icon="🏕"
+        subtitle="Buy, sell, and provide AC - USDC liquidity for get AC"
+        title="Welcome to Adept Camp!"
       />
       <Spacer size="md" />
       <CardWrapper>
         <HomeCard
-          title="Basis Cash"
-          symbol="BAC"
+          title="Adept Camp"
+          symbol="AC"
           color="#EEA7ED"
           supplyLabel="Circulating Supply"
-          address={cashAddr}
+          address={acAddr}
           stat={cash}
-        />
-        <Spacer size="lg" />
-        <HomeCard
-          title="Basis Share"
-          symbol="BAS"
-          color="#E83725"
-          address={shareAddr}
-          stat={share}
-        />
-        <Spacer size="lg" />
-        <HomeCard
-          title="Basis Bond"
-          symbol="BAB"
-          color="#ECF25C"
-          address={bondAddr}
-          stat={bond}
         />
       </CardWrapper>
     </Page>

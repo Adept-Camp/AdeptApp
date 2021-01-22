@@ -26,6 +26,7 @@ export class BasisCash {
   BAC: ERC20;
   BAS: ERC20;
   BAB: ERC20;
+  AC: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -40,9 +41,9 @@ export class BasisCash {
     for (const [symbol, [address, decimal]] of Object.entries(externalTokens)) {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal); // TODO: add decimal
     }
-    this.BAC = new ERC20(deployments.Cash.address, provider, 'BAC');
-    this.BAS = new ERC20(deployments.Share.address, provider, 'BAS');
-    this.BAB = new ERC20(deployments.Bond.address, provider, 'BAB');
+    this.AC = new ERC20(deployments.AC.address, provider, 'AC');
+    // this.BAS = new ERC20(deployments.Share.address, provider, 'BAS');
+    // this.BAB = new ERC20(deployments.Bond.address, provider, 'BAB');
 
     // Uniswap V2 Pair
     this.bacDai = new Contract(

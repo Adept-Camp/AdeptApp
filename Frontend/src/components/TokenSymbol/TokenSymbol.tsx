@@ -8,6 +8,7 @@ import DAILogo from '../../assets/img/DAI.png';
 import sUSDLogo from '../../assets/img/sUSD.png';
 import USDCLogo from '../../assets/img/USDC.png';
 import USDTLogo from '../../assets/img/USDT.png';
+import ACLogo from '../../assets/img/AC.png';
 
 const logosBySymbol: {[title: string]: string} = {
   'BAC': bacLogo,
@@ -20,6 +21,7 @@ const logosBySymbol: {[title: string]: string} = {
   'USDT': USDTLogo,
   'BAC_DAI-UNI-LPv2': bacLogo,
   'BAS_DAI-UNI-LPv2': basLogo,
+  'AC': ACLogo,
 };
 
 type BasisLogoProps = {
