@@ -12,17 +12,15 @@ import Notice from '../../components/Notice';
 const Home: React.FC = () => {
   const basisCash = useBasisCash();
 
-  const [{ cash, bond, share }, setStats] = useState<OverviewData>({});
+  const [{ ac }, setStats] = useState<OverviewData>({});
   const fetchStats = useCallback(async () => {
-    const [cash, bond, share] = await Promise.all([
-      basisCash.getCashStatFromUniswap(),
-      basisCash.getBondStat(),
-      basisCash.getShareStat(),
+    const [ac] = await Promise.all([
+      basisCash.getACStat()
     ]);
-    if (Date.now() < config.bondLaunchesAt.getTime()) {
-      bond.priceInDAI = '-';
-    }
-    setStats({ cash, bond, share });
+    // if (Date.now() < config.bondLaunchesAt.getTime()) {
+    //   bond.priceInDAI = '-';
+    // }
+    setStats({ ac });
   }, [basisCash, setStats]);
 
   useEffect(() => {
@@ -51,7 +49,7 @@ const Home: React.FC = () => {
           color="#EEA7ED"
           supplyLabel="Circulating Supply"
           address={acAddr}
-          stat={cash}
+          stat={ac}
         />
       </CardWrapper>
     </Page>

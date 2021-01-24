@@ -22,7 +22,7 @@ export class BasisCash {
   externalTokens: { [name: string]: ERC20 };
   boardroomVersionOfUser?: string;
 
-  bacDai: Contract;
+  acUSDC: Contract;
   BAC: ERC20;
   BAS: ERC20;
   BAB: ERC20;
@@ -46,8 +46,8 @@ export class BasisCash {
     // this.BAB = new ERC20(deployments.Bond.address, provider, 'BAB');
 
     // Uniswap V2 Pair
-    this.bacDai = new Contract(
-      externalTokens['BAC_DAI-UNI-LPv2'][0],
+    this.acUSDC = new Contract(
+      externalTokens['USDC_AC-UNI-LPv2'][0],
       IUniswapV2PairABI,
       provider,
     );
@@ -68,11 +68,11 @@ export class BasisCash {
     for (const [name, contract] of Object.entries(this.contracts)) {
       this.contracts[name] = contract.connect(this.signer);
     }
-    const tokens = [this.BAC, this.BAS, this.BAB, ...Object.values(this.externalTokens)];
+    const tokens = [this.AC, ...Object.values(this.externalTokens)];
     for (const token of tokens) {
       token.connect(this.signer);
     }
-    this.bacDai = this.bacDai.connect(this.signer);
+    this.acUSDC = this.acUSDC.connect(this.signer);
     console.log(`🔓 Wallet is unlocked. Welcome, ${account}!`);
     this.fetchBoardroomVersionOfUser()
       .then((version) => (this.boardroomVersionOfUser = version))
@@ -104,6 +104,14 @@ export class BasisCash {
       priceInDAI: await this.getTokenPriceFromUniswap(this.BAC),
       totalSupply: supply,
     };
+  }
+
+  async getACStat() : Promise<TokenStat> {
+    const supply = await this.AC.displayedTotalSupply();
+    return {
+      priceInDAI: await this.getTokenPriceFromUniswap(this.AC),
+      totalSupply: supply,
+    }
   }
 
   /**
@@ -158,15 +166,15 @@ export class BasisCash {
     await this.provider.ready;
 
     const { chainId } = this.config;
-    const { DAI } = this.config.externalTokens;
+    const { USDC } = this.config.externalTokens;
 
-    const dai = new Token(chainId, DAI[0], 18);
+    const usdc = new Token(chainId, USDC[0], 18);
     const token = new Token(chainId, tokenContract.address, 18);
 
     try {
-      const daiToToken = await Fetcher.fetchPairData(dai, token, this.provider);
-      const priceInDAI = new Route([daiToToken], token);
-      return priceInDAI.midPrice.toSignificant(3);
+      const usdcToToken = await Fetcher.fetchPairData(usdc, token, this.provider);
+      const priceInUSDC = new Route([usdcToToken], token);
+      return priceInUSDC.midPrice.toSignificant(3);
     } catch (err) {
       console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
     }
