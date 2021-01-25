@@ -74,12 +74,12 @@ export class BasisCash {
     }
     this.acUSDC = this.acUSDC.connect(this.signer);
     console.log(`🔓 Wallet is unlocked. Welcome, ${account}!`);
-    this.fetchBoardroomVersionOfUser()
-      .then((version) => (this.boardroomVersionOfUser = version))
-      .catch((err) => {
-        console.error(`Failed to fetch boardroom version: ${err.stack}`);
-        this.boardroomVersionOfUser = 'latest';
-      });
+    // this.fetchBoardroomVersionOfUser()
+    //   .then((version) => (this.boardroomVersionOfUser = version))
+    //   .catch((err) => {
+    //     console.error(`Failed to fetch boardroom version: ${err.stack}`);
+    //     this.boardroomVersionOfUser = 'latest';
+    //   });
   }
 
   get isUnlocked(): boolean {

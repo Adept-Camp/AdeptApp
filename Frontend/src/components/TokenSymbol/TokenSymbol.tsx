@@ -22,6 +22,7 @@ const logosBySymbol: {[title: string]: string} = {
   'BAC_DAI-UNI-LPv2': bacLogo,
   'BAS_DAI-UNI-LPv2': basLogo,
   'AC': ACLogo,
+  'USDC_AC-UNI-LPv2': ACLogo,
 };
 
 type BasisLogoProps = {

@@ -25,6 +25,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   stat,
 }) => {
   const tokenUrl = `${config.etherscanUrl}/token/${address}`;
+  console.log('stat', stat)
   return (
     <Wrapper>
       <CardHeader>{title}</CardHeader>
