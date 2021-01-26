@@ -18,7 +18,7 @@ const configurations: { [env: string]: Configuration } = {
       // USDT: ['0xdAC17F958D2ee523a2206206994597C13D831ec7', 6],
       // 'BAC_DAI-UNI-LPv2': ['0xd4405F0704621DBe9d4dEA60E128E0C3b26bddbD', 18],
       // 'BAS_DAI-UNI-LPv2': ['0x0379dA7a5895D13037B6937b109fA8607a659ADF', 18],
-      'USDC_AC-UNI-LPv2': ['0x42Efa0eF2eeE27fe0eD7D3Eba78ACf2c3f975893', 18]
+      'USDC_AC-UNI-LPv2': ['0x08c200828fbc2ef8e3cde4fec0e5c817ab9afdf2', 18]
     },
     baseLaunchDate: new Date('2020-11-26T00:00:00Z'),
     bondLaunchesAt: new Date('2020-12-03T15:00:00Z'),
