@@ -1,5 +1,4 @@
 const Distributor = artifacts.require('Distributor');
-// const InitialJAMDistributor = artifacts.require('InitialJAMDistributor');
 const InitialShareDistributor = artifacts.require('InitialShareDistributor');
 
 module.exports = async (deployer, network, accounts) => {

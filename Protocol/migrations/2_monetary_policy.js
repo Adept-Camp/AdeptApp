@@ -1,23 +1,14 @@
-// const contract = require('@truffle/contract');
-// const { POOL_START_DATE } = require('./pools');
+
 const knownContracts = require('./known-contracts');
-
-// const JAM = artifacts.require('JAM');
-// const Bond = artifacts.require('Bond');
-// const Share = artifacts.require('Share');
 const IERC20 = artifacts.require('IERC20');
-
 const Oracle = artifacts.require('Oracle');
-// const Boardroom = artifacts.require('Boardroom');
-// const Treasury = artifacts.require('Treasury');
-// const SimpleFund = artifacts.require('SimpleERCFund');
 
 const UniswapV2Factory = artifacts.require('UniswapV2Factory');
 const UniswapV2Router02 = artifacts.require('UniswapV2Router02');
 
 const HOUR = 60 * 60;
 // const DAY = 86400;
-const ORACLE_START_DATE = Date.parse('2021-01-22T00:00:00Z') / 1000;
+const ORACLE_START_DATE = Date.parse('2021-01-27T00:00:00Z') / 1000;
 
 async function migration(deployer, network, accounts) {
   let uniswap, uniswapRouter;
@@ -77,16 +68,6 @@ async function migration(deployer, network, accounts) {
     deadline()
   );
 
-  // console.log(
-  //   `USDC-JAM pair address: ${await uniswap.getPair(usdc.address, jam.address)}`
-  // );
-
-  // // Deploy boardroom
-  // await deployer.deploy(Boardroom, jam.address, share.address);
-
-  // // Deploy simpleFund
-  // await deployer.deploy(SimpleFund);
-  console.log('addresses', uniswap.address, ac.address, usdc.address);
   // // 2. Deploy oracle for the pair between bac and usdc
   await deployer.deploy(
     Oracle,
@@ -96,31 +77,6 @@ async function migration(deployer, network, accounts) {
     HOUR,
     ORACLE_START_DATE
   );
-  // const seignorageOracle = await deployer.deploy(
-  //   Oracle,
-  //   uniswap.address,
-  //   jam.address,
-  //   usdc.address,
-  //   DAY,
-  //   ORACLE_START_DATE
-  // );
-
-  // let startTime = POOL_START_DATE;
-  // if (network === 'mainnet') {
-  //   startTime += 5 * DAY;
-  // }
-
-  // await deployer.deploy(
-  //   Treasury,
-  //   jam.address,
-  //   Bond.address,
-  //   Share.address,
-  //   bondOracle.address,
-  //   seignorageOracle.address,
-  //   Boardroom.address,
-  //   SimpleFund.address,
-  //   startTime
-  // );
 }
 
 async function approveIfNot(token, owner, spender, amount) {

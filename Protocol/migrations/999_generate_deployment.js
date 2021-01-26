@@ -4,22 +4,9 @@ const util = require('util');
 
 const writeFile = util.promisify(fs.writeFile);
 
-function distributionPoolContracts() {
-  return fs
-    .readdirSync(path.resolve(__dirname, '../contracts/distribution'))
-    .filter((filename) => filename.endsWith('Pool.sol'))
-    .map((filename) => filename.replace('.sol', ''));
-}
-
 // Deployment and ABI will be generated for contracts listed on here.
 // The deployment thus can be used on basiscash-frontend.
 const exportedContracts = [
-  // 'JAM',
-  // 'Bond',
-  // 'Share',
-  // 'Boardroom',
-  // 'Treasury',
-  // ...distributionPoolContracts(),
   'USDCACLPTokenACPool'
 ];
 
