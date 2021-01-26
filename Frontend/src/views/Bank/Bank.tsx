@@ -58,13 +58,15 @@ const Bank: React.FC = () => {
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
   let pairName: string;
   let uniswapUrl: string;
-  if (bank.depositTokenName.includes('BAC')) {
-    pairName = 'BAC-DAI pair';
-    uniswapUrl = 'https://app.uniswap.org/#/add/0x3449FC1Cd036255BA1EB19d65fF4BA2b8903A69a/0x6B175474E89094C44Da98b954EedeAC495271d0F';
-  } else {
-    pairName = 'BAS-DAI pair';
-    uniswapUrl = 'https://app.uniswap.org/#/add/0xa7ED29B253D8B4E3109ce07c80fc570f81B63696/0x6B175474E89094C44Da98b954EedeAC495271d0F';
-  }
+  // if (bank.depositTokenName.includes('BAC')) {
+  //   pairName = 'BAC-DAI pair';
+  //   uniswapUrl = 'https://app.uniswap.org/#/add/0x3449FC1Cd036255BA1EB19d65fF4BA2b8903A69a/0x6B175474E89094C44Da98b954EedeAC495271d0F';
+  // } else {
+  //   pairName = 'BAS-DAI pair';
+  //   uniswapUrl = 'https://app.uniswap.org/#/add/0xa7ED29B253D8B4E3109ce07c80fc570f81B63696/0x6B175474E89094C44Da98b954EedeAC495271d0F';
+  // }
+  pairName = 'USDC-AC'
+  uniswapUrl = 'https://app.uniswap.org/#/add/0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b/0xf14ca9df0a7d16f7ee3403b18724f89f3f1f95fd'
   return (
     <StyledLink href={uniswapUrl} target="_blank">
       {`🦄  Provide liquidity to ${pairName} on Uniswap  🦄`}
