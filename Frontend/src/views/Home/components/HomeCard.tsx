@@ -71,6 +71,9 @@ const StyledCards = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const StyledValue = styled.span`
@@ -81,7 +84,7 @@ const StyledValue = styled.span`
 
 const CardSection = styled.div`
   margin-bottom: ${(props) => props.theme.spacing[4]}px;
-
+  width: 100%;
   &:last-child {
     margin-bottom: 0;
   }
