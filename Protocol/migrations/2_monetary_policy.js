@@ -8,7 +8,7 @@ const UniswapV2Router02 = artifacts.require('UniswapV2Router02');
 
 const HOUR = 60 * 60;
 // const DAY = 86400;
-const ORACLE_START_DATE = Date.parse('2021-01-27T00:00:00Z') / 1000;
+const ORACLE_START_DATE = Date.parse('2021-01-28T23:00:00Z') / 1000;
 
 async function migration(deployer, network, accounts) {
   let uniswap, uniswapRouter;
